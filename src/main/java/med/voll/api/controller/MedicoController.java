@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/medicos")
+@RequestMapping("medicos")
 public class MedicoController {
 
     @Autowired // ayuda a crear la instancia con el repository
     private MedicoRepository repository;
 
-    @Transactional
     @PostMapping
+    @Transactional
     public void registrar(@RequestBody @Valid DatosRegistroMedico datos) {
         repository.save(new Medico(datos));
     }
